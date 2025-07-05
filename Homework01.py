@@ -187,6 +187,10 @@ def main():
         else:
             print("Невідома команда. Введіть 'help' щоб переглянути список доступних команд.")
 
+
+if __name__ == "__main__":
+    main()
+
 # Створення нової адресної книги
 #    book = AddressBook()
 
@@ -224,5 +228,3 @@ def main():
 #    for name, record in book.data.items():
 #        print(record)
 
-if __name__ == "__main__":
-    main()
