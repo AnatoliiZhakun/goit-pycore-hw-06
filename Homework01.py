@@ -159,7 +159,6 @@ def all_phone(contacts: AddressBook):
         return "Контакти не знайдено"
     return str(contacts)
 
-
 def main():
     contacts = AddressBook()
     print("Привіт, вітаю вас в боті асистенті")
