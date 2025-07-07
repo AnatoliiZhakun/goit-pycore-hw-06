@@ -145,7 +145,14 @@ def delete_contact(args, contacts: AddressBook):
     else:
         return f"Контакт '{name}' не знайдено."
 
-
+@input_error
+def find_contact_by_name(args, contacts: AddressBook):
+    name = args[0]
+    record = contacts.find(name)
+    if record:
+        return f"Знайдено: {record}"
+    else:
+        return f"Контакт з іменем '{name}' не знайдено."
 
 def all_phone(contacts: AddressBook):
     if not contacts.data:
@@ -174,16 +181,19 @@ def main():
             print(show_phone(args, contacts))
         elif command == "all":
             print(all_phone(contacts))
-        elif command == "delete":
+        elif command in ["delete", "del"]:
             print(delete_contact(args, contacts))
+        elif command == "find":
+            print(find_contact_by_name(args, contacts))
         elif command == "help":
             print("Доступні команди:\n"
-                  "add <name> <phone>\n"
-                  "change <name> <old_phone> <new_phone>\n"
-                  "delete <name>\n"
-                  "phone <name>\n"
-                  "all\n"
-                  "exit / close")
+                "add <name> <phone>\n"
+                "change <name> <old_phone> <new_phone>\n"
+                "delete / del <name>\n"
+                "phone <name>\n"
+                "find <name>\n"
+                "all\n"
+                "exit / close")
         else:
             print("Невідома команда. Введіть 'help' щоб переглянути список доступних команд.")
 
